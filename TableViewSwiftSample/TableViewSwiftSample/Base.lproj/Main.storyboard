@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Yll-Yw-uO5">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="fyv-lV-KO8">
+            <objects>
+                <navigationController id="Yll-Yw-uO5" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bmf-Zg-MU6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="aAB-jA-9Wc" kind="relationship" relationship="rootViewController" id="OZd-Gm-n5J"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jmt-EQ-h2P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-116" y="362"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="8kQ-DP-Ekh">
+            <objects>
+                <viewController id="aAB-jA-9Wc" customClass="ViewController" customModule="TableViewSwiftSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ICm-KJ-mP9"/>
+                        <viewControllerLayoutGuide type="bottom" id="kIj-9D-TpJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5u2-yp-xFo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="phM-61-roi">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="44" id="3Zo-Uw-k36">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Zo-Uw-k36" id="kKn-2c-duR">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="phM-61-roi" firstAttribute="leading" secondItem="5u2-yp-xFo" secondAttribute="leading" id="4i6-FZ-PB8"/>
+                            <constraint firstItem="phM-61-roi" firstAttribute="top" secondItem="5u2-yp-xFo" secondAttribute="top" id="DVf-ZI-2vc"/>
+                            <constraint firstAttribute="trailing" secondItem="phM-61-roi" secondAttribute="trailing" id="FXT-Af-k75"/>
+                            <constraint firstItem="kIj-9D-TpJ" firstAttribute="top" secondItem="phM-61-roi" secondAttribute="bottom" id="LwT-e8-mVn"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Na2-1j-MLe"/>
+                    <connections>
+                        <outlet property="tableView" destination="phM-61-roi" id="BDi-ki-ZU1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f8V-X4-0FH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="409" y="362"/>
+        </scene>
+    </scenes>
+</document>
