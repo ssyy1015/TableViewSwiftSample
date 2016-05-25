@@ -6,23 +6,23 @@ provides-nominal:
 provides-member:
 - ["C20TableViewSwiftSample11AppDelegate", ""]
 provides-dynamic-lookup:
-- "applicationWillResignActive"
-- "applicationWillTerminate"
-- "applicationDidEnterBackground"
-- "window"
-- "application"
-- "applicationDidBecomeActive"
 - "applicationWillEnterForeground"
+- "applicationDidEnterBackground"
+- "application"
+- "applicationWillResignActive"
+- "applicationDidBecomeActive"
+- "window"
+- "applicationWillTerminate"
 depends-top-level:
+- "Bool"
 - !private "BooleanLiteralType"
+- "UIApplication"
 - "AppDelegate"
 - "UIWindow"
+- "NSObject"
 - "AnyObject"
 - "UIApplicationDelegate"
-- "UIApplication"
-- "NSObject"
 - "UIResponder"
-- "Bool"
 depends-member:
 - ["PSs9AnyObject", "application"]
 - ["PSs9AnyObject", "applicationDidBecomeActive"]

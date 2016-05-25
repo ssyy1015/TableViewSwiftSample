@@ -107,12 +107,23 @@ SWIFT_CLASS("_TtC20TableViewSwiftSample11AppDelegate")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class UIImageView;
+@class UILabel;
+@class NSCoder;
+
+SWIFT_CLASS("_TtC20TableViewSwiftSample8NewsCell")
+@interface NewsCell : UITableViewCell
+@property (nonatomic, weak) IBOutlet UIImageView * __null_unspecified thumbnailImageView;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified dateLabel;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified titleLabel;
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * __nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class NSArray;
 @class UITableView;
 @class NSIndexPath;
-@class UITableViewCell;
 @class NSBundle;
-@class NSCoder;
 
 SWIFT_CLASS("_TtC20TableViewSwiftSample14ViewController")
 @interface ViewController : UIViewController <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -120,6 +131,8 @@ SWIFT_CLASS("_TtC20TableViewSwiftSample14ViewController")
 @property (nonatomic, strong) NSArray * __null_unspecified tableArray;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
+- (void)registerProfile:(void (^ __nullable)(void))success;
+- (void)news;
 
 /// セクション数返却
 - (NSInteger)numberOfSectionsInTableView:(UITableView * __nonnull)tableView;
@@ -128,9 +141,6 @@ SWIFT_CLASS("_TtC20TableViewSwiftSample14ViewController")
 /// 
 /// </code>
 - (NSInteger)tableView:(UITableView * __nonnull)tableView numberOfRowsInSection:(NSInteger)section;
-
-/// セクションのタイトルを返却
-- (NSString * __nullable)tableView:(UITableView * __nonnull)tableView titleForHeaderInSection:(NSInteger)section;
 
 /// indexPathに応じたセルを返却
 - (UITableViewCell * __nonnull)tableView:(UITableView * __nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * __nonnull)indexPath;
