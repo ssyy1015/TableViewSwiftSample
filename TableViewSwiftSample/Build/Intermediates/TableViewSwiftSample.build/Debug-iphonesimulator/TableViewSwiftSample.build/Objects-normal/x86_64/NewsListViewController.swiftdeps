@@ -1,55 +1,60 @@
 ### Swift dependencies file v0 ###
 provides-top-level:
 - "NewsCell"
-- "ViewController"
+- "NewsListViewController"
 provides-nominal:
 - "C20TableViewSwiftSample8NewsCell"
-- "C20TableViewSwiftSample14ViewController"
+- "C20TableViewSwiftSample22NewsListViewController"
 provides-member:
 - ["C20TableViewSwiftSample8NewsCell", ""]
-- ["C20TableViewSwiftSample14ViewController", ""]
+- ["C20TableViewSwiftSample22NewsListViewController", ""]
 provides-dynamic-lookup:
-- "news"
-- "dateLabel"
-- "didReceiveMemoryWarning"
-- "registerProfile"
-- "tableArray"
+- "tableView"
 - "tableView"
 - "tableView"
 - "tableView"
 - "titleLabel"
-- "thumbnailImageView"
+- "news"
 - "numberOfSectionsInTableView"
+- "didReceiveMemoryWarning"
+- "registerProfile"
 - "viewDidLoad"
+- "prepareForSegue"
+- "dateLabel"
+- "thumbnailImageView"
+- "newsList"
 depends-top-level:
-- !private "Dictionary"
+- "UIStoryboardSegue"
+- !private "NSUUID"
+- !private "NSUserDefaults"
+- "NewsListViewController"
+- "UILabel"
+- "Int"
+- !private ">"
+- !private "AFJSONResponseSerializer"
 - !private "!="
 - !private "NSURL"
-- !private "NSDateFormatter"
+- "UITableView"
+- "Void"
+- !private "+"
+- !private "NewsDetailViewController"
+- "NewsCell"
+- !private "NSDictionary"
+- "AnyObject"
+- "UIImageView"
+- "NSIndexPath"
+- !private "=="
 - "NSArray"
 - !private "StringLiteralType"
-- "UIViewController"
-- !private "AFJSONResponseSerializer"
-- "Void"
-- !private "String"
-- !private "NSDictionary"
-- "Int"
-- !private "=="
-- "UIImageView"
-- !private "+"
-- "ViewController"
-- "NSIndexPath"
-- !private "NSUserDefaults"
-- "UITableViewCell"
-- !private "UnicodeScalarType"
-- !private "AFHTTPSessionManager"
-- "UITableView"
-- "UILabel"
-- "NewsCell"
-- "UITableViewDataSource"
-- !private ">"
 - "UITableViewDelegate"
-- !private "NSUUID"
+- "UITableViewCell"
+- "UIViewController"
+- !private "AFHTTPSessionManager"
+- !private "Dictionary"
+- !private "NSDateFormatter"
+- !private "String"
+- "UITableViewDataSource"
+- !private "UnicodeScalarType"
 depends-member:
 - !private ["CSo23AFHTTPRequestSerializer", "setValue"]
 - !private ["CSo24AFHTTPResponseSerializer", "init"]
@@ -86,12 +91,17 @@ depends-member:
 - !private ["PSs9AnyObject", "deinit"]
 - !private ["PSs9AnyObject", "delegate"]
 - !private ["PSs9AnyObject", "dequeueReusableCellWithIdentifier"]
+- !private ["PSs9AnyObject", "destinationViewController"]
 - ["PSs9AnyObject", "didReceiveMemoryWarning"]
 - !private ["PSs9AnyObject", "image"]
 - ["PSs9AnyObject", "indexPathForPreferredFocusedViewInTableView"]
+- !private ["PSs9AnyObject", "indexPathForSelectedRow"]
 - ["PSs9AnyObject", "init"]
 - ["PSs9AnyObject", "news"]
+- ["PSs9AnyObject", "newsList"]
 - ["PSs9AnyObject", "numberOfSectionsInTableView"]
+- !private ["PSs9AnyObject", "performSegueWithIdentifier"]
+- ["PSs9AnyObject", "prepareForSegue"]
 - ["PSs9AnyObject", "registerProfile"]
 - !private ["PSs9AnyObject", "reloadData"]
 - !private ["PSs9AnyObject", "requestSerializer"]
@@ -118,7 +128,6 @@ depends-member:
 - !private ["PSs9AnyObject", "stringFromDate"]
 - !private ["PSs9AnyObject", "subscript"]
 - !private ["PSs9AnyObject", "synchronize"]
-- ["PSs9AnyObject", "tableArray"]
 - ["PSs9AnyObject", "tableView"]
 - !private ["PSs9AnyObject", "text"]
 - ["PSs9AnyObject", "thumbnailImageView"]
@@ -154,12 +163,17 @@ depends-member:
 - ["PSs11CVarArgType", "dateLabel"]
 - !private ["PSs11CVarArgType", "delegate"]
 - !private ["PSs11CVarArgType", "dequeueReusableCellWithIdentifier"]
+- !private ["PSs11CVarArgType", "destinationViewController"]
 - ["PSs11CVarArgType", "didReceiveMemoryWarning"]
 - !private ["PSs11CVarArgType", "image"]
 - ["PSs11CVarArgType", "indexPathForPreferredFocusedViewInTableView"]
+- !private ["PSs11CVarArgType", "indexPathForSelectedRow"]
 - ["PSs11CVarArgType", "init"]
 - ["PSs11CVarArgType", "news"]
+- ["PSs11CVarArgType", "newsList"]
 - ["PSs11CVarArgType", "numberOfSectionsInTableView"]
+- !private ["PSs11CVarArgType", "performSegueWithIdentifier"]
+- ["PSs11CVarArgType", "prepareForSegue"]
 - ["PSs11CVarArgType", "registerProfile"]
 - !private ["PSs11CVarArgType", "reloadData"]
 - !private ["PSs11CVarArgType", "requestSerializer"]
@@ -186,7 +200,6 @@ depends-member:
 - !private ["PSs11CVarArgType", "stringFromDate"]
 - !private ["PSs11CVarArgType", "subscript"]
 - !private ["PSs11CVarArgType", "synchronize"]
-- ["PSs11CVarArgType", "tableArray"]
 - ["PSs11CVarArgType", "tableView"]
 - !private ["PSs11CVarArgType", "text"]
 - ["PSs11CVarArgType", "thumbnailImageView"]
@@ -227,12 +240,17 @@ depends-member:
 - ["PSs23CustomStringConvertible", "dateLabel"]
 - !private ["PSs23CustomStringConvertible", "delegate"]
 - !private ["PSs23CustomStringConvertible", "dequeueReusableCellWithIdentifier"]
+- !private ["PSs23CustomStringConvertible", "destinationViewController"]
 - ["PSs23CustomStringConvertible", "didReceiveMemoryWarning"]
 - !private ["PSs23CustomStringConvertible", "image"]
 - ["PSs23CustomStringConvertible", "indexPathForPreferredFocusedViewInTableView"]
+- !private ["PSs23CustomStringConvertible", "indexPathForSelectedRow"]
 - ["PSs23CustomStringConvertible", "init"]
 - ["PSs23CustomStringConvertible", "news"]
+- ["PSs23CustomStringConvertible", "newsList"]
 - ["PSs23CustomStringConvertible", "numberOfSectionsInTableView"]
+- !private ["PSs23CustomStringConvertible", "performSegueWithIdentifier"]
+- ["PSs23CustomStringConvertible", "prepareForSegue"]
 - ["PSs23CustomStringConvertible", "registerProfile"]
 - !private ["PSs23CustomStringConvertible", "reloadData"]
 - !private ["PSs23CustomStringConvertible", "requestSerializer"]
@@ -259,7 +277,6 @@ depends-member:
 - !private ["PSs23CustomStringConvertible", "stringFromDate"]
 - !private ["PSs23CustomStringConvertible", "subscript"]
 - !private ["PSs23CustomStringConvertible", "synchronize"]
-- ["PSs23CustomStringConvertible", "tableArray"]
 - ["PSs23CustomStringConvertible", "tableView"]
 - !private ["PSs23CustomStringConvertible", "text"]
 - ["PSs23CustomStringConvertible", "thumbnailImageView"]
@@ -292,12 +309,17 @@ depends-member:
 - ["PSs9Equatable", "dateLabel"]
 - !private ["PSs9Equatable", "delegate"]
 - !private ["PSs9Equatable", "dequeueReusableCellWithIdentifier"]
+- !private ["PSs9Equatable", "destinationViewController"]
 - ["PSs9Equatable", "didReceiveMemoryWarning"]
 - !private ["PSs9Equatable", "image"]
 - ["PSs9Equatable", "indexPathForPreferredFocusedViewInTableView"]
+- !private ["PSs9Equatable", "indexPathForSelectedRow"]
 - ["PSs9Equatable", "init"]
 - ["PSs9Equatable", "news"]
+- ["PSs9Equatable", "newsList"]
 - ["PSs9Equatable", "numberOfSectionsInTableView"]
+- !private ["PSs9Equatable", "performSegueWithIdentifier"]
+- ["PSs9Equatable", "prepareForSegue"]
 - ["PSs9Equatable", "registerProfile"]
 - !private ["PSs9Equatable", "reloadData"]
 - !private ["PSs9Equatable", "requestSerializer"]
@@ -324,7 +346,6 @@ depends-member:
 - !private ["PSs9Equatable", "stringFromDate"]
 - !private ["PSs9Equatable", "subscript"]
 - !private ["PSs9Equatable", "synchronize"]
-- ["PSs9Equatable", "tableArray"]
 - ["PSs9Equatable", "tableView"]
 - !private ["PSs9Equatable", "text"]
 - ["PSs9Equatable", "thumbnailImageView"]
@@ -356,12 +377,17 @@ depends-member:
 - ["PSs8Hashable", "dateLabel"]
 - !private ["PSs8Hashable", "delegate"]
 - !private ["PSs8Hashable", "dequeueReusableCellWithIdentifier"]
+- !private ["PSs8Hashable", "destinationViewController"]
 - ["PSs8Hashable", "didReceiveMemoryWarning"]
 - !private ["PSs8Hashable", "image"]
 - ["PSs8Hashable", "indexPathForPreferredFocusedViewInTableView"]
+- !private ["PSs8Hashable", "indexPathForSelectedRow"]
 - ["PSs8Hashable", "init"]
 - ["PSs8Hashable", "news"]
+- ["PSs8Hashable", "newsList"]
 - ["PSs8Hashable", "numberOfSectionsInTableView"]
+- !private ["PSs8Hashable", "performSegueWithIdentifier"]
+- ["PSs8Hashable", "prepareForSegue"]
 - ["PSs8Hashable", "registerProfile"]
 - !private ["PSs8Hashable", "reloadData"]
 - !private ["PSs8Hashable", "requestSerializer"]
@@ -388,7 +414,6 @@ depends-member:
 - !private ["PSs8Hashable", "stringFromDate"]
 - !private ["PSs8Hashable", "subscript"]
 - !private ["PSs8Hashable", "synchronize"]
-- ["PSs8Hashable", "tableArray"]
 - ["PSs8Hashable", "tableView"]
 - !private ["PSs8Hashable", "text"]
 - ["PSs8Hashable", "thumbnailImageView"]
@@ -410,6 +435,7 @@ depends-member:
 - !private ["PSs14MirrorPathType", "IntegerLiteralType"]
 - !private ["PSs14MirrorPathType", "characters"]
 - !private ["CSo7NSArray", "count"]
+- !private ["CSo7NSArray", "deinit"]
 - !private ["CSo7NSArray", "subscript"]
 - !private ["PSo8NSCoding", "AFHTTPSessionManager"]
 - !private ["PSo8NSCoding", "AFJSONResponseSerializer"]
@@ -433,9 +459,13 @@ depends-member:
 - ["PSo8NSCoding", "didReceiveMemoryWarning"]
 - !private ["PSo8NSCoding", "image"]
 - ["PSo8NSCoding", "indexPathForPreferredFocusedViewInTableView"]
+- !private ["PSo8NSCoding", "indexPathForSelectedRow"]
 - ["PSo8NSCoding", "init"]
 - ["PSo8NSCoding", "news"]
+- ["PSo8NSCoding", "newsList"]
 - ["PSo8NSCoding", "numberOfSectionsInTableView"]
+- !private ["PSo8NSCoding", "performSegueWithIdentifier"]
+- ["PSo8NSCoding", "prepareForSegue"]
 - ["PSo8NSCoding", "registerProfile"]
 - !private ["PSo8NSCoding", "reloadData"]
 - !private ["PSo8NSCoding", "requestSerializer"]
@@ -458,7 +488,6 @@ depends-member:
 - !private ["PSo8NSCoding", "setValue"]
 - !private ["PSo8NSCoding", "stringFromDate"]
 - !private ["PSo8NSCoding", "subscript"]
-- ["PSo8NSCoding", "tableArray"]
 - ["PSo8NSCoding", "tableView"]
 - !private ["PSo8NSCoding", "text"]
 - ["PSo8NSCoding", "thumbnailImageView"]
@@ -500,7 +529,10 @@ depends-member:
 - ["PSo26NSExtensionRequestHandling", "indexPathForPreferredFocusedViewInTableView"]
 - ["PSo26NSExtensionRequestHandling", "init"]
 - ["PSo26NSExtensionRequestHandling", "news"]
+- ["PSo26NSExtensionRequestHandling", "newsList"]
 - ["PSo26NSExtensionRequestHandling", "numberOfSectionsInTableView"]
+- !private ["PSo26NSExtensionRequestHandling", "performSegueWithIdentifier"]
+- ["PSo26NSExtensionRequestHandling", "prepareForSegue"]
 - ["PSo26NSExtensionRequestHandling", "registerProfile"]
 - ["PSo26NSExtensionRequestHandling", "scrollViewDidEndDecelerating"]
 - ["PSo26NSExtensionRequestHandling", "scrollViewDidEndDragging"]
@@ -515,7 +547,6 @@ depends-member:
 - ["PSo26NSExtensionRequestHandling", "scrollViewWillBeginZooming"]
 - ["PSo26NSExtensionRequestHandling", "scrollViewWillEndDragging"]
 - ["PSo26NSExtensionRequestHandling", "sectionIndexTitlesForTableView"]
-- ["PSo26NSExtensionRequestHandling", "tableArray"]
 - ["PSo26NSExtensionRequestHandling", "tableView"]
 - ["PSo26NSExtensionRequestHandling", "viewDidLoad"]
 - ["PSo26NSExtensionRequestHandling", "viewForZoomingInScrollView"]
@@ -536,6 +567,7 @@ depends-member:
 - !private ["PSo16NSMutableCopying", "subscript"]
 - !private ["CSo8NSObject", "AFHTTPSessionManager"]
 - !private ["CSo8NSObject", "AFJSONResponseSerializer"]
+- ["CSo8NSObject", "AnyObject"]
 - !private ["CSo8NSObject", "GET"]
 - ["CSo8NSObject", "Int"]
 - !private ["CSo8NSObject", "Key"]
@@ -547,10 +579,12 @@ depends-member:
 - !private ["CSo8NSObject", "NSUUID"]
 - !private ["CSo8NSObject", "NSUserDefaults"]
 - !private ["CSo8NSObject", "NewsCell"]
+- !private ["CSo8NSObject", "NewsDetailViewController"]
 - !private ["CSo8NSObject", "POST"]
 - !private ["CSo8NSObject", "String"]
 - ["CSo8NSObject", "UIImageView"]
 - ["CSo8NSObject", "UILabel"]
+- ["CSo8NSObject", "UIStoryboardSegue"]
 - ["CSo8NSObject", "UITableView"]
 - ["CSo8NSObject", "UITableViewCell"]
 - !private ["CSo8NSObject", "UUIDString"]
@@ -562,14 +596,20 @@ depends-member:
 - !private ["CSo8NSObject", "dateFormat"]
 - !private ["CSo8NSObject", "dateFromString"]
 - ["CSo8NSObject", "dateLabel"]
+- !private ["CSo8NSObject", "deinit"]
 - !private ["CSo8NSObject", "delegate"]
 - !private ["CSo8NSObject", "dequeueReusableCellWithIdentifier"]
+- !private ["CSo8NSObject", "destinationViewController"]
 - ["CSo8NSObject", "didReceiveMemoryWarning"]
 - !private ["CSo8NSObject", "image"]
 - ["CSo8NSObject", "indexPathForPreferredFocusedViewInTableView"]
+- !private ["CSo8NSObject", "indexPathForSelectedRow"]
 - ["CSo8NSObject", "init"]
 - ["CSo8NSObject", "news"]
+- ["CSo8NSObject", "newsList"]
 - ["CSo8NSObject", "numberOfSectionsInTableView"]
+- !private ["CSo8NSObject", "performSegueWithIdentifier"]
+- ["CSo8NSObject", "prepareForSegue"]
 - ["CSo8NSObject", "registerProfile"]
 - !private ["CSo8NSObject", "reloadData"]
 - !private ["CSo8NSObject", "requestSerializer"]
@@ -596,7 +636,6 @@ depends-member:
 - !private ["CSo8NSObject", "stringFromDate"]
 - !private ["CSo8NSObject", "subscript"]
 - !private ["CSo8NSObject", "synchronize"]
-- ["CSo8NSObject", "tableArray"]
 - ["CSo8NSObject", "tableView"]
 - !private ["CSo8NSObject", "text"]
 - ["CSo8NSObject", "thumbnailImageView"]
@@ -622,12 +661,17 @@ depends-member:
 - ["PSo16NSObjectProtocol", "dateLabel"]
 - !private ["PSo16NSObjectProtocol", "delegate"]
 - !private ["PSo16NSObjectProtocol", "dequeueReusableCellWithIdentifier"]
+- !private ["PSo16NSObjectProtocol", "destinationViewController"]
 - ["PSo16NSObjectProtocol", "didReceiveMemoryWarning"]
 - !private ["PSo16NSObjectProtocol", "image"]
 - ["PSo16NSObjectProtocol", "indexPathForPreferredFocusedViewInTableView"]
+- !private ["PSo16NSObjectProtocol", "indexPathForSelectedRow"]
 - ["PSo16NSObjectProtocol", "init"]
 - ["PSo16NSObjectProtocol", "news"]
+- ["PSo16NSObjectProtocol", "newsList"]
 - ["PSo16NSObjectProtocol", "numberOfSectionsInTableView"]
+- !private ["PSo16NSObjectProtocol", "performSegueWithIdentifier"]
+- ["PSo16NSObjectProtocol", "prepareForSegue"]
 - ["PSo16NSObjectProtocol", "registerProfile"]
 - !private ["PSo16NSObjectProtocol", "reloadData"]
 - !private ["PSo16NSObjectProtocol", "requestSerializer"]
@@ -654,7 +698,6 @@ depends-member:
 - !private ["PSo16NSObjectProtocol", "stringFromDate"]
 - !private ["PSo16NSObjectProtocol", "subscript"]
 - !private ["PSo16NSObjectProtocol", "synchronize"]
-- ["PSo16NSObjectProtocol", "tableArray"]
 - ["PSo16NSObjectProtocol", "tableView"]
 - !private ["PSo16NSObjectProtocol", "text"]
 - ["PSo16NSObjectProtocol", "thumbnailImageView"]
@@ -710,6 +753,51 @@ depends-member:
 - ["C20TableViewSwiftSample8NewsCell", "init"]
 - ["C20TableViewSwiftSample8NewsCell", "thumbnailImageView"]
 - ["C20TableViewSwiftSample8NewsCell", "titleLabel"]
+- !private ["C20TableViewSwiftSample24NewsDetailViewController", "news"]
+- !private ["C20TableViewSwiftSample22NewsListViewController", "AFHTTPSessionManager"]
+- !private ["C20TableViewSwiftSample22NewsListViewController", "AFJSONResponseSerializer"]
+- ["C20TableViewSwiftSample22NewsListViewController", "AnyObject"]
+- ["C20TableViewSwiftSample22NewsListViewController", "Int"]
+- ["C20TableViewSwiftSample22NewsListViewController", "NSArray"]
+- !private ["C20TableViewSwiftSample22NewsListViewController", "NSDateFormatter"]
+- !private ["C20TableViewSwiftSample22NewsListViewController", "NSDictionary"]
+- ["C20TableViewSwiftSample22NewsListViewController", "NSIndexPath"]
+- !private ["C20TableViewSwiftSample22NewsListViewController", "NSURL"]
+- !private ["C20TableViewSwiftSample22NewsListViewController", "NSUUID"]
+- !private ["C20TableViewSwiftSample22NewsListViewController", "NSUserDefaults"]
+- !private ["C20TableViewSwiftSample22NewsListViewController", "NewsCell"]
+- !private ["C20TableViewSwiftSample22NewsListViewController", "NewsDetailViewController"]
+- !private ["C20TableViewSwiftSample22NewsListViewController", "String"]
+- ["C20TableViewSwiftSample22NewsListViewController", "UIStoryboardSegue"]
+- ["C20TableViewSwiftSample22NewsListViewController", "UITableView"]
+- ["C20TableViewSwiftSample22NewsListViewController", "UITableViewCell"]
+- ["C20TableViewSwiftSample22NewsListViewController", "Void"]
+- ["C20TableViewSwiftSample22NewsListViewController", "deinit"]
+- ["C20TableViewSwiftSample22NewsListViewController", "didReceiveMemoryWarning"]
+- ["C20TableViewSwiftSample22NewsListViewController", "indexPathForPreferredFocusedViewInTableView"]
+- ["C20TableViewSwiftSample22NewsListViewController", "init"]
+- ["C20TableViewSwiftSample22NewsListViewController", "news"]
+- ["C20TableViewSwiftSample22NewsListViewController", "newsList"]
+- ["C20TableViewSwiftSample22NewsListViewController", "numberOfSectionsInTableView"]
+- !private ["C20TableViewSwiftSample22NewsListViewController", "performSegueWithIdentifier"]
+- ["C20TableViewSwiftSample22NewsListViewController", "prepareForSegue"]
+- ["C20TableViewSwiftSample22NewsListViewController", "registerProfile"]
+- ["C20TableViewSwiftSample22NewsListViewController", "scrollViewDidEndDecelerating"]
+- ["C20TableViewSwiftSample22NewsListViewController", "scrollViewDidEndDragging"]
+- ["C20TableViewSwiftSample22NewsListViewController", "scrollViewDidEndScrollingAnimation"]
+- ["C20TableViewSwiftSample22NewsListViewController", "scrollViewDidEndZooming"]
+- ["C20TableViewSwiftSample22NewsListViewController", "scrollViewDidScroll"]
+- ["C20TableViewSwiftSample22NewsListViewController", "scrollViewDidScrollToTop"]
+- ["C20TableViewSwiftSample22NewsListViewController", "scrollViewDidZoom"]
+- ["C20TableViewSwiftSample22NewsListViewController", "scrollViewShouldScrollToTop"]
+- ["C20TableViewSwiftSample22NewsListViewController", "scrollViewWillBeginDecelerating"]
+- ["C20TableViewSwiftSample22NewsListViewController", "scrollViewWillBeginDragging"]
+- ["C20TableViewSwiftSample22NewsListViewController", "scrollViewWillBeginZooming"]
+- ["C20TableViewSwiftSample22NewsListViewController", "scrollViewWillEndDragging"]
+- ["C20TableViewSwiftSample22NewsListViewController", "sectionIndexTitlesForTableView"]
+- ["C20TableViewSwiftSample22NewsListViewController", "tableView"]
+- ["C20TableViewSwiftSample22NewsListViewController", "viewDidLoad"]
+- ["C20TableViewSwiftSample22NewsListViewController", "viewForZoomingInScrollView"]
 - !private ["Sq", "deinit"]
 - !private ["PSs16OutputStreamType", "characters"]
 - !private ["PSs21RandomAccessIndexType", "IntegerLiteralType"]
@@ -737,6 +825,7 @@ depends-member:
 - !private ["PSo29UIAccessibilityIdentification", "delegate"]
 - !private ["PSo29UIAccessibilityIdentification", "dequeueReusableCellWithIdentifier"]
 - !private ["PSo29UIAccessibilityIdentification", "image"]
+- !private ["PSo29UIAccessibilityIdentification", "indexPathForSelectedRow"]
 - ["PSo29UIAccessibilityIdentification", "init"]
 - !private ["PSo29UIAccessibilityIdentification", "reloadData"]
 - !private ["PSo29UIAccessibilityIdentification", "setImageWithURL"]
@@ -749,6 +838,7 @@ depends-member:
 - !private ["PSo12UIAppearance", "delegate"]
 - !private ["PSo12UIAppearance", "dequeueReusableCellWithIdentifier"]
 - !private ["PSo12UIAppearance", "image"]
+- !private ["PSo12UIAppearance", "indexPathForSelectedRow"]
 - ["PSo12UIAppearance", "init"]
 - !private ["PSo12UIAppearance", "reloadData"]
 - !private ["PSo12UIAppearance", "setImageWithURL"]
@@ -769,9 +859,13 @@ depends-member:
 - ["PSo21UIAppearanceContainer", "didReceiveMemoryWarning"]
 - !private ["PSo21UIAppearanceContainer", "image"]
 - ["PSo21UIAppearanceContainer", "indexPathForPreferredFocusedViewInTableView"]
+- !private ["PSo21UIAppearanceContainer", "indexPathForSelectedRow"]
 - ["PSo21UIAppearanceContainer", "init"]
 - ["PSo21UIAppearanceContainer", "news"]
+- ["PSo21UIAppearanceContainer", "newsList"]
 - ["PSo21UIAppearanceContainer", "numberOfSectionsInTableView"]
+- !private ["PSo21UIAppearanceContainer", "performSegueWithIdentifier"]
+- ["PSo21UIAppearanceContainer", "prepareForSegue"]
 - ["PSo21UIAppearanceContainer", "registerProfile"]
 - !private ["PSo21UIAppearanceContainer", "reloadData"]
 - ["PSo21UIAppearanceContainer", "scrollViewDidEndDecelerating"]
@@ -788,7 +882,6 @@ depends-member:
 - ["PSo21UIAppearanceContainer", "scrollViewWillEndDragging"]
 - ["PSo21UIAppearanceContainer", "sectionIndexTitlesForTableView"]
 - !private ["PSo21UIAppearanceContainer", "setImageWithURL"]
-- ["PSo21UIAppearanceContainer", "tableArray"]
 - ["PSo21UIAppearanceContainer", "tableView"]
 - !private ["PSo21UIAppearanceContainer", "text"]
 - ["PSo21UIAppearanceContainer", "thumbnailImageView"]
@@ -806,7 +899,10 @@ depends-member:
 - ["PSo18UIContentContainer", "indexPathForPreferredFocusedViewInTableView"]
 - ["PSo18UIContentContainer", "init"]
 - ["PSo18UIContentContainer", "news"]
+- ["PSo18UIContentContainer", "newsList"]
 - ["PSo18UIContentContainer", "numberOfSectionsInTableView"]
+- !private ["PSo18UIContentContainer", "performSegueWithIdentifier"]
+- ["PSo18UIContentContainer", "prepareForSegue"]
 - ["PSo18UIContentContainer", "registerProfile"]
 - ["PSo18UIContentContainer", "scrollViewDidEndDecelerating"]
 - ["PSo18UIContentContainer", "scrollViewDidEndDragging"]
@@ -821,7 +917,6 @@ depends-member:
 - ["PSo18UIContentContainer", "scrollViewWillBeginZooming"]
 - ["PSo18UIContentContainer", "scrollViewWillEndDragging"]
 - ["PSo18UIContentContainer", "sectionIndexTitlesForTableView"]
-- ["PSo18UIContentContainer", "tableArray"]
 - ["PSo18UIContentContainer", "tableView"]
 - ["PSo18UIContentContainer", "viewDidLoad"]
 - ["PSo18UIContentContainer", "viewForZoomingInScrollView"]
@@ -831,6 +926,7 @@ depends-member:
 - !private ["PSo17UICoordinateSpace", "delegate"]
 - !private ["PSo17UICoordinateSpace", "dequeueReusableCellWithIdentifier"]
 - !private ["PSo17UICoordinateSpace", "image"]
+- !private ["PSo17UICoordinateSpace", "indexPathForSelectedRow"]
 - ["PSo17UICoordinateSpace", "init"]
 - !private ["PSo17UICoordinateSpace", "reloadData"]
 - !private ["PSo17UICoordinateSpace", "setImageWithURL"]
@@ -843,6 +939,7 @@ depends-member:
 - !private ["PSo13UIDynamicItem", "delegate"]
 - !private ["PSo13UIDynamicItem", "dequeueReusableCellWithIdentifier"]
 - !private ["PSo13UIDynamicItem", "image"]
+- !private ["PSo13UIDynamicItem", "indexPathForSelectedRow"]
 - ["PSo13UIDynamicItem", "init"]
 - !private ["PSo13UIDynamicItem", "reloadData"]
 - !private ["PSo13UIDynamicItem", "setImageWithURL"]
@@ -863,9 +960,13 @@ depends-member:
 - ["PSo18UIFocusEnvironment", "didReceiveMemoryWarning"]
 - !private ["PSo18UIFocusEnvironment", "image"]
 - ["PSo18UIFocusEnvironment", "indexPathForPreferredFocusedViewInTableView"]
+- !private ["PSo18UIFocusEnvironment", "indexPathForSelectedRow"]
 - ["PSo18UIFocusEnvironment", "init"]
 - ["PSo18UIFocusEnvironment", "news"]
+- ["PSo18UIFocusEnvironment", "newsList"]
 - ["PSo18UIFocusEnvironment", "numberOfSectionsInTableView"]
+- !private ["PSo18UIFocusEnvironment", "performSegueWithIdentifier"]
+- ["PSo18UIFocusEnvironment", "prepareForSegue"]
 - ["PSo18UIFocusEnvironment", "registerProfile"]
 - !private ["PSo18UIFocusEnvironment", "reloadData"]
 - ["PSo18UIFocusEnvironment", "scrollViewDidEndDecelerating"]
@@ -882,7 +983,6 @@ depends-member:
 - ["PSo18UIFocusEnvironment", "scrollViewWillEndDragging"]
 - ["PSo18UIFocusEnvironment", "sectionIndexTitlesForTableView"]
 - !private ["PSo18UIFocusEnvironment", "setImageWithURL"]
-- ["PSo18UIFocusEnvironment", "tableArray"]
 - ["PSo18UIFocusEnvironment", "tableView"]
 - !private ["PSo18UIFocusEnvironment", "text"]
 - ["PSo18UIFocusEnvironment", "thumbnailImageView"]
@@ -900,6 +1000,7 @@ depends-member:
 - !private ["CSo7UILabel", "text"]
 - !private ["CSo11UIResponder", "AFHTTPSessionManager"]
 - !private ["CSo11UIResponder", "AFJSONResponseSerializer"]
+- ["CSo11UIResponder", "AnyObject"]
 - ["CSo11UIResponder", "Int"]
 - ["CSo11UIResponder", "NSArray"]
 - !private ["CSo11UIResponder", "NSDateFormatter"]
@@ -909,9 +1010,11 @@ depends-member:
 - !private ["CSo11UIResponder", "NSUUID"]
 - !private ["CSo11UIResponder", "NSUserDefaults"]
 - !private ["CSo11UIResponder", "NewsCell"]
+- !private ["CSo11UIResponder", "NewsDetailViewController"]
 - !private ["CSo11UIResponder", "String"]
 - ["CSo11UIResponder", "UIImageView"]
 - ["CSo11UIResponder", "UILabel"]
+- ["CSo11UIResponder", "UIStoryboardSegue"]
 - ["CSo11UIResponder", "UITableView"]
 - ["CSo11UIResponder", "UITableViewCell"]
 - ["CSo11UIResponder", "Void"]
@@ -922,9 +1025,13 @@ depends-member:
 - ["CSo11UIResponder", "didReceiveMemoryWarning"]
 - !private ["CSo11UIResponder", "image"]
 - ["CSo11UIResponder", "indexPathForPreferredFocusedViewInTableView"]
+- !private ["CSo11UIResponder", "indexPathForSelectedRow"]
 - ["CSo11UIResponder", "init"]
 - ["CSo11UIResponder", "news"]
+- ["CSo11UIResponder", "newsList"]
 - ["CSo11UIResponder", "numberOfSectionsInTableView"]
+- !private ["CSo11UIResponder", "performSegueWithIdentifier"]
+- ["CSo11UIResponder", "prepareForSegue"]
 - ["CSo11UIResponder", "registerProfile"]
 - !private ["CSo11UIResponder", "reloadData"]
 - ["CSo11UIResponder", "scrollViewDidEndDecelerating"]
@@ -941,7 +1048,6 @@ depends-member:
 - ["CSo11UIResponder", "scrollViewWillEndDragging"]
 - ["CSo11UIResponder", "sectionIndexTitlesForTableView"]
 - !private ["CSo11UIResponder", "setImageWithURL"]
-- ["CSo11UIResponder", "tableArray"]
 - ["CSo11UIResponder", "tableView"]
 - !private ["CSo11UIResponder", "text"]
 - ["CSo11UIResponder", "thumbnailImageView"]
@@ -951,6 +1057,7 @@ depends-member:
 - !private ["CSo12UIScrollView", "dataSource"]
 - !private ["CSo12UIScrollView", "delegate"]
 - !private ["CSo12UIScrollView", "dequeueReusableCellWithIdentifier"]
+- !private ["CSo12UIScrollView", "indexPathForSelectedRow"]
 - !private ["CSo12UIScrollView", "reloadData"]
 - !private ["PSo20UIScrollViewDelegate", "AFHTTPSessionManager"]
 - !private ["PSo20UIScrollViewDelegate", "AFJSONResponseSerializer"]
@@ -960,7 +1067,9 @@ depends-member:
 - !private ["PSo20UIScrollViewDelegate", "NSUserDefaults"]
 - ["PSo20UIScrollViewDelegate", "indexPathForPreferredFocusedViewInTableView"]
 - !private ["PSo20UIScrollViewDelegate", "news"]
+- !private ["PSo20UIScrollViewDelegate", "newsList"]
 - ["PSo20UIScrollViewDelegate", "numberOfSectionsInTableView"]
+- !private ["PSo20UIScrollViewDelegate", "performSegueWithIdentifier"]
 - !private ["PSo20UIScrollViewDelegate", "registerProfile"]
 - ["PSo20UIScrollViewDelegate", "scrollViewDidEndDecelerating"]
 - ["PSo20UIScrollViewDelegate", "scrollViewDidEndDragging"]
@@ -975,7 +1084,6 @@ depends-member:
 - ["PSo20UIScrollViewDelegate", "scrollViewWillBeginZooming"]
 - ["PSo20UIScrollViewDelegate", "scrollViewWillEndDragging"]
 - ["PSo20UIScrollViewDelegate", "sectionIndexTitlesForTableView"]
-- !private ["PSo20UIScrollViewDelegate", "tableArray"]
 - ["PSo20UIScrollViewDelegate", "tableView"]
 - ["PSo20UIScrollViewDelegate", "viewForZoomingInScrollView"]
 - ["PSo20UIScrollViewDelegate", ""]
@@ -989,7 +1097,10 @@ depends-member:
 - ["PSo16UIStateRestoring", "indexPathForPreferredFocusedViewInTableView"]
 - ["PSo16UIStateRestoring", "init"]
 - ["PSo16UIStateRestoring", "news"]
+- ["PSo16UIStateRestoring", "newsList"]
 - ["PSo16UIStateRestoring", "numberOfSectionsInTableView"]
+- !private ["PSo16UIStateRestoring", "performSegueWithIdentifier"]
+- ["PSo16UIStateRestoring", "prepareForSegue"]
 - ["PSo16UIStateRestoring", "registerProfile"]
 - ["PSo16UIStateRestoring", "scrollViewDidEndDecelerating"]
 - ["PSo16UIStateRestoring", "scrollViewDidEndDragging"]
@@ -1004,14 +1115,15 @@ depends-member:
 - ["PSo16UIStateRestoring", "scrollViewWillBeginZooming"]
 - ["PSo16UIStateRestoring", "scrollViewWillEndDragging"]
 - ["PSo16UIStateRestoring", "sectionIndexTitlesForTableView"]
-- ["PSo16UIStateRestoring", "tableArray"]
 - ["PSo16UIStateRestoring", "tableView"]
 - ["PSo16UIStateRestoring", "viewDidLoad"]
 - ["PSo16UIStateRestoring", "viewForZoomingInScrollView"]
 - ["PSo16UIStateRestoring", ""]
+- !private ["CSo17UIStoryboardSegue", "destinationViewController"]
 - !private ["CSo11UITableView", "dataSource"]
 - !private ["CSo11UITableView", "delegate"]
 - !private ["CSo11UITableView", "dequeueReusableCellWithIdentifier"]
+- !private ["CSo11UITableView", "indexPathForSelectedRow"]
 - !private ["CSo11UITableView", "reloadData"]
 - ["CSo15UITableViewCell", "UIImageView"]
 - ["CSo15UITableViewCell", "UILabel"]
@@ -1029,7 +1141,9 @@ depends-member:
 - !private ["PSo21UITableViewDataSource", "NSUserDefaults"]
 - ["PSo21UITableViewDataSource", "indexPathForPreferredFocusedViewInTableView"]
 - !private ["PSo21UITableViewDataSource", "news"]
+- !private ["PSo21UITableViewDataSource", "newsList"]
 - ["PSo21UITableViewDataSource", "numberOfSectionsInTableView"]
+- !private ["PSo21UITableViewDataSource", "performSegueWithIdentifier"]
 - !private ["PSo21UITableViewDataSource", "registerProfile"]
 - ["PSo21UITableViewDataSource", "scrollViewDidEndDecelerating"]
 - ["PSo21UITableViewDataSource", "scrollViewDidEndDragging"]
@@ -1044,7 +1158,6 @@ depends-member:
 - ["PSo21UITableViewDataSource", "scrollViewWillBeginZooming"]
 - ["PSo21UITableViewDataSource", "scrollViewWillEndDragging"]
 - ["PSo21UITableViewDataSource", "sectionIndexTitlesForTableView"]
-- !private ["PSo21UITableViewDataSource", "tableArray"]
 - ["PSo21UITableViewDataSource", "tableView"]
 - ["PSo21UITableViewDataSource", "viewForZoomingInScrollView"]
 - ["PSo21UITableViewDataSource", ""]
@@ -1056,7 +1169,9 @@ depends-member:
 - !private ["PSo19UITableViewDelegate", "NSUserDefaults"]
 - ["PSo19UITableViewDelegate", "indexPathForPreferredFocusedViewInTableView"]
 - !private ["PSo19UITableViewDelegate", "news"]
+- !private ["PSo19UITableViewDelegate", "newsList"]
 - ["PSo19UITableViewDelegate", "numberOfSectionsInTableView"]
+- !private ["PSo19UITableViewDelegate", "performSegueWithIdentifier"]
 - !private ["PSo19UITableViewDelegate", "registerProfile"]
 - ["PSo19UITableViewDelegate", "scrollViewDidEndDecelerating"]
 - ["PSo19UITableViewDelegate", "scrollViewDidEndDragging"]
@@ -1071,7 +1186,6 @@ depends-member:
 - ["PSo19UITableViewDelegate", "scrollViewWillBeginZooming"]
 - ["PSo19UITableViewDelegate", "scrollViewWillEndDragging"]
 - ["PSo19UITableViewDelegate", "sectionIndexTitlesForTableView"]
-- !private ["PSo19UITableViewDelegate", "tableArray"]
 - ["PSo19UITableViewDelegate", "tableView"]
 - ["PSo19UITableViewDelegate", "viewForZoomingInScrollView"]
 - ["PSo19UITableViewDelegate", ""]
@@ -1088,9 +1202,13 @@ depends-member:
 - ["PSo18UITraitEnvironment", "didReceiveMemoryWarning"]
 - !private ["PSo18UITraitEnvironment", "image"]
 - ["PSo18UITraitEnvironment", "indexPathForPreferredFocusedViewInTableView"]
+- !private ["PSo18UITraitEnvironment", "indexPathForSelectedRow"]
 - ["PSo18UITraitEnvironment", "init"]
 - ["PSo18UITraitEnvironment", "news"]
+- ["PSo18UITraitEnvironment", "newsList"]
 - ["PSo18UITraitEnvironment", "numberOfSectionsInTableView"]
+- !private ["PSo18UITraitEnvironment", "performSegueWithIdentifier"]
+- ["PSo18UITraitEnvironment", "prepareForSegue"]
 - ["PSo18UITraitEnvironment", "registerProfile"]
 - !private ["PSo18UITraitEnvironment", "reloadData"]
 - ["PSo18UITraitEnvironment", "scrollViewDidEndDecelerating"]
@@ -1107,7 +1225,6 @@ depends-member:
 - ["PSo18UITraitEnvironment", "scrollViewWillEndDragging"]
 - ["PSo18UITraitEnvironment", "sectionIndexTitlesForTableView"]
 - !private ["PSo18UITraitEnvironment", "setImageWithURL"]
-- ["PSo18UITraitEnvironment", "tableArray"]
 - ["PSo18UITraitEnvironment", "tableView"]
 - !private ["PSo18UITraitEnvironment", "text"]
 - ["PSo18UITraitEnvironment", "thumbnailImageView"]
@@ -1122,6 +1239,7 @@ depends-member:
 - !private ["CSo6UIView", "delegate"]
 - !private ["CSo6UIView", "dequeueReusableCellWithIdentifier"]
 - !private ["CSo6UIView", "image"]
+- !private ["CSo6UIView", "indexPathForSelectedRow"]
 - ["CSo6UIView", "init"]
 - !private ["CSo6UIView", "reloadData"]
 - !private ["CSo6UIView", "setImageWithURL"]
@@ -1130,6 +1248,7 @@ depends-member:
 - ["CSo6UIView", "titleLabel"]
 - !private ["CSo16UIViewController", "AFHTTPSessionManager"]
 - !private ["CSo16UIViewController", "AFJSONResponseSerializer"]
+- ["CSo16UIViewController", "AnyObject"]
 - ["CSo16UIViewController", "Int"]
 - ["CSo16UIViewController", "NSArray"]
 - !private ["CSo16UIViewController", "NSDateFormatter"]
@@ -1139,15 +1258,21 @@ depends-member:
 - !private ["CSo16UIViewController", "NSUUID"]
 - !private ["CSo16UIViewController", "NSUserDefaults"]
 - !private ["CSo16UIViewController", "NewsCell"]
+- !private ["CSo16UIViewController", "NewsDetailViewController"]
 - !private ["CSo16UIViewController", "String"]
+- ["CSo16UIViewController", "UIStoryboardSegue"]
 - ["CSo16UIViewController", "UITableView"]
 - ["CSo16UIViewController", "UITableViewCell"]
 - ["CSo16UIViewController", "Void"]
+- !private ["CSo16UIViewController", "deinit"]
 - ["CSo16UIViewController", "didReceiveMemoryWarning"]
 - ["CSo16UIViewController", "indexPathForPreferredFocusedViewInTableView"]
 - ["CSo16UIViewController", "init"]
 - ["CSo16UIViewController", "news"]
+- ["CSo16UIViewController", "newsList"]
 - ["CSo16UIViewController", "numberOfSectionsInTableView"]
+- !private ["CSo16UIViewController", "performSegueWithIdentifier"]
+- ["CSo16UIViewController", "prepareForSegue"]
 - ["CSo16UIViewController", "registerProfile"]
 - ["CSo16UIViewController", "scrollViewDidEndDecelerating"]
 - ["CSo16UIViewController", "scrollViewDidEndDragging"]
@@ -1162,51 +1287,11 @@ depends-member:
 - ["CSo16UIViewController", "scrollViewWillBeginZooming"]
 - ["CSo16UIViewController", "scrollViewWillEndDragging"]
 - ["CSo16UIViewController", "sectionIndexTitlesForTableView"]
-- ["CSo16UIViewController", "tableArray"]
 - ["CSo16UIViewController", "tableView"]
 - ["CSo16UIViewController", "viewDidLoad"]
 - ["CSo16UIViewController", "viewForZoomingInScrollView"]
 - ["CSo16UIViewController", ""]
 - !private ["PSs31UnicodeScalarLiteralConvertible", "characters"]
-- !private ["C20TableViewSwiftSample14ViewController", "AFHTTPSessionManager"]
-- !private ["C20TableViewSwiftSample14ViewController", "AFJSONResponseSerializer"]
-- ["C20TableViewSwiftSample14ViewController", "Int"]
-- ["C20TableViewSwiftSample14ViewController", "NSArray"]
-- !private ["C20TableViewSwiftSample14ViewController", "NSDateFormatter"]
-- !private ["C20TableViewSwiftSample14ViewController", "NSDictionary"]
-- ["C20TableViewSwiftSample14ViewController", "NSIndexPath"]
-- !private ["C20TableViewSwiftSample14ViewController", "NSURL"]
-- !private ["C20TableViewSwiftSample14ViewController", "NSUUID"]
-- !private ["C20TableViewSwiftSample14ViewController", "NSUserDefaults"]
-- !private ["C20TableViewSwiftSample14ViewController", "NewsCell"]
-- !private ["C20TableViewSwiftSample14ViewController", "String"]
-- ["C20TableViewSwiftSample14ViewController", "UITableView"]
-- ["C20TableViewSwiftSample14ViewController", "UITableViewCell"]
-- ["C20TableViewSwiftSample14ViewController", "Void"]
-- ["C20TableViewSwiftSample14ViewController", "deinit"]
-- ["C20TableViewSwiftSample14ViewController", "didReceiveMemoryWarning"]
-- ["C20TableViewSwiftSample14ViewController", "indexPathForPreferredFocusedViewInTableView"]
-- ["C20TableViewSwiftSample14ViewController", "init"]
-- ["C20TableViewSwiftSample14ViewController", "news"]
-- ["C20TableViewSwiftSample14ViewController", "numberOfSectionsInTableView"]
-- ["C20TableViewSwiftSample14ViewController", "registerProfile"]
-- ["C20TableViewSwiftSample14ViewController", "scrollViewDidEndDecelerating"]
-- ["C20TableViewSwiftSample14ViewController", "scrollViewDidEndDragging"]
-- ["C20TableViewSwiftSample14ViewController", "scrollViewDidEndScrollingAnimation"]
-- ["C20TableViewSwiftSample14ViewController", "scrollViewDidEndZooming"]
-- ["C20TableViewSwiftSample14ViewController", "scrollViewDidScroll"]
-- ["C20TableViewSwiftSample14ViewController", "scrollViewDidScrollToTop"]
-- ["C20TableViewSwiftSample14ViewController", "scrollViewDidZoom"]
-- ["C20TableViewSwiftSample14ViewController", "scrollViewShouldScrollToTop"]
-- ["C20TableViewSwiftSample14ViewController", "scrollViewWillBeginDecelerating"]
-- ["C20TableViewSwiftSample14ViewController", "scrollViewWillBeginDragging"]
-- ["C20TableViewSwiftSample14ViewController", "scrollViewWillBeginZooming"]
-- ["C20TableViewSwiftSample14ViewController", "scrollViewWillEndDragging"]
-- ["C20TableViewSwiftSample14ViewController", "sectionIndexTitlesForTableView"]
-- ["C20TableViewSwiftSample14ViewController", "tableArray"]
-- ["C20TableViewSwiftSample14ViewController", "tableView"]
-- ["C20TableViewSwiftSample14ViewController", "viewDidLoad"]
-- ["C20TableViewSwiftSample14ViewController", "viewForZoomingInScrollView"]
 - !private ["PSs33_BuiltinBooleanLiteralConvertible", "_getBuiltinLogicValue"]
 - !private ["PSs49_BuiltinExtendedGraphemeClusterLiteralConvertible", "characters"]
 - !private ["PSs33_BuiltinIntegerLiteralConvertible", "IntegerLiteralType"]
@@ -1236,6 +1321,7 @@ depends-member:
 - !private ["PSs12_Reflectable", "delegate"]
 - !private ["PSs12_Reflectable", "dequeueReusableCellWithIdentifier"]
 - !private ["PSs12_Reflectable", "image"]
+- !private ["PSs12_Reflectable", "indexPathForSelectedRow"]
 - ["PSs12_Reflectable", "init"]
 - !private ["PSs12_Reflectable", "reloadData"]
 - !private ["PSs12_Reflectable", "setImageWithURL"]
@@ -1302,6 +1388,8 @@ depends-nominal:
 - !private "CSo6NSUUID"
 - !private "CSo14NSUserDefaults"
 - "C20TableViewSwiftSample8NewsCell"
+- !private "C20TableViewSwiftSample24NewsDetailViewController"
+- "C20TableViewSwiftSample22NewsListViewController"
 - !private "Sq"
 - !private "PSs16OutputStreamType"
 - !private "PSs21RandomAccessIndexType"
@@ -1328,6 +1416,7 @@ depends-nominal:
 - !private "CSo12UIScrollView"
 - "PSo20UIScrollViewDelegate"
 - "PSo16UIStateRestoring"
+- !private "CSo17UIStoryboardSegue"
 - !private "CSo11UITableView"
 - "CSo15UITableViewCell"
 - "PSo21UITableViewDataSource"
@@ -1336,7 +1425,6 @@ depends-nominal:
 - "CSo6UIView"
 - "CSo16UIViewController"
 - !private "PSs31UnicodeScalarLiteralConvertible"
-- "C20TableViewSwiftSample14ViewController"
 - !private "PSs33_BuiltinBooleanLiteralConvertible"
 - !private "PSs49_BuiltinExtendedGraphemeClusterLiteralConvertible"
 - !private "PSs33_BuiltinIntegerLiteralConvertible"
@@ -1385,4 +1473,4 @@ depends-external:
 - "/Users/y_satou/Desktop/espla/esplaBlog/TableViewSwiftSample/TableViewSwiftSample/Build/Products/Debug-iphonesimulator/AFNetworking.framework/Headers/AFNetworking.h"
 - "/Users/y_satou/Desktop/espla/esplaBlog/TableViewSwiftSample/TableViewSwiftSample/Build/Products/Debug-iphonesimulator/AFNetworking.framework/Headers/AFNetworking-umbrella.h"
 - "/Users/y_satou/Desktop/espla/esplaBlog/TableViewSwiftSample/TableViewSwiftSample/Build/Products/Debug-iphonesimulator/AFNetworking.framework/Modules/module.modulemap"
-interface-hash: "820c8bfca8b7bf843adffb4c668c88cc"
+interface-hash: "caefeeb8cc2dab84a74e935791b67bd3"

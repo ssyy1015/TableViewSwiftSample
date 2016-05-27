@@ -120,18 +120,66 @@ SWIFT_CLASS("_TtC20TableViewSwiftSample8NewsCell")
 - (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class NSArray;
+@class UITextView;
+
+SWIFT_CLASS("_TtC20TableViewSwiftSample21NewsDetailContentCell")
+@interface NewsDetailContentCell : UITableViewCell
+@property (nonatomic, weak) IBOutlet UITextView * __null_unspecified contentTextView;
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * __nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC20TableViewSwiftSample20NewsDetailHeaderCell")
+@interface NewsDetailHeaderCell : UITableViewCell
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified dateLabel;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified titleLabel;
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * __nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class NSDictionary;
 @class UITableView;
 @class NSIndexPath;
 @class NSBundle;
 
-SWIFT_CLASS("_TtC20TableViewSwiftSample14ViewController")
-@interface ViewController : UIViewController <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
+SWIFT_CLASS("_TtC20TableViewSwiftSample24NewsDetailViewController")
+@interface NewsDetailViewController : UIViewController <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, weak) IBOutlet UITableView * __null_unspecified tableView;
-@property (nonatomic, strong) NSArray * __null_unspecified tableArray;
+@property (nonatomic, strong) NSDictionary * __null_unspecified news;
+@property (nonatomic, copy) NSString * __null_unspecified headerHTML;
+@property (nonatomic, copy) NSString * __null_unspecified footerHTML;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
+- (void)newsCSS;
+
+/// セクション数返却
+- (NSInteger)numberOfSectionsInTableView:(UITableView * __nonnull)tableView;
+
+/// セクション毎のセル数を返却
+- (NSInteger)tableView:(UITableView * __nonnull)tableView numberOfRowsInSection:(NSInteger)section;
+
+/// indexPathに応じたセルを返却
+- (UITableViewCell * __nonnull)tableView:(UITableView * __nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * __nonnull)indexPath;
+- (nonnull instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class NSArray;
+@class UIStoryboardSegue;
+
+SWIFT_CLASS("_TtC20TableViewSwiftSample22NewsListViewController")
+@interface NewsListViewController : UIViewController <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@property (nonatomic, weak) IBOutlet UITableView * __null_unspecified tableView;
+@property (nonatomic, strong) NSArray * __null_unspecified newsList;
+- (void)viewDidLoad;
+- (void)didReceiveMemoryWarning;
+- (void)prepareForSegue:(UIStoryboardSegue * __nonnull)segue sender:(id __nullable)sender;
+
+/// register_provisional
 - (void)registerProfile:(void (^ __nullable)(void))success;
+
+/// newsAPI
 - (void)news;
 
 /// セクション数返却
@@ -144,6 +192,9 @@ SWIFT_CLASS("_TtC20TableViewSwiftSample14ViewController")
 
 /// indexPathに応じたセルを返却
 - (UITableViewCell * __nonnull)tableView:(UITableView * __nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * __nonnull)indexPath;
+
+/// Cell選択時
+- (void)tableView:(UITableView * __nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * __nonnull)indexPath;
 - (nonnull instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end

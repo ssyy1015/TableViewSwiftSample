@@ -22,10 +22,10 @@
             </objects>
             <point key="canvasLocation" x="-116" y="362"/>
         </scene>
-        <!--View Controller-->
+        <!--News List View Controller-->
         <scene sceneID="8kQ-DP-Ekh">
             <objects>
-                <viewController id="aAB-jA-9Wc" customClass="ViewController" customModule="TableViewSwiftSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aAB-jA-9Wc" customClass="NewsListViewController" customModule="TableViewSwiftSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ICm-KJ-mP9"/>
                         <viewControllerLayoutGuide type="bottom" id="kIj-9D-TpJ"/>
@@ -102,11 +102,114 @@ title</string>
                     <navigationItem key="navigationItem" id="Na2-1j-MLe"/>
                     <connections>
                         <outlet property="tableView" destination="phM-61-roi" id="BDi-ki-ZU1"/>
+                        <segue destination="u6P-g7-jFU" kind="push" identifier="NewsDetailViewController" id="XRk-2A-frn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f8V-X4-0FH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="304" y="362"/>
+        </scene>
+        <!--News Detail View Controller-->
+        <scene sceneID="MZE-rE-e0s">
+            <objects>
+                <viewController storyboardIdentifier="NewsDetailViewController" id="u6P-g7-jFU" customClass="NewsDetailViewController" customModule="TableViewSwiftSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3iG-2g-EMU"/>
+                        <viewControllerLayoutGuide type="bottom" id="i1j-ab-0rg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="L4W-1r-xo1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sP0-F7-TBS">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsDetailHeaderCell" rowHeight="70" id="rjV-Lg-4Cu" customClass="NewsDetailHeaderCell" customModule="TableViewSwiftSample" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rjV-Lg-4Cu" id="tL4-2f-SvB">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yyyy.hh.dd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSy-Tc-ULv">
+                                                    <rect key="frame" x="8" y="0.0" width="304" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="17" id="RVU-af-Sul"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNx-nU-cFi">
+                                                    <rect key="frame" x="8" y="25" width="304" height="37"/>
+                                                    <string key="text">タイトル
+タイトル</string>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="qSy-Tc-ULv" firstAttribute="leading" secondItem="tL4-2f-SvB" secondAttribute="leading" constant="8" id="BZg-n3-gu6"/>
+                                                <constraint firstItem="DNx-nU-cFi" firstAttribute="top" secondItem="qSy-Tc-ULv" secondAttribute="bottom" constant="8" id="R8n-aj-8Rb"/>
+                                                <constraint firstItem="qSy-Tc-ULv" firstAttribute="top" secondItem="tL4-2f-SvB" secondAttribute="top" id="WQc-bG-86Q"/>
+                                                <constraint firstItem="DNx-nU-cFi" firstAttribute="leading" secondItem="tL4-2f-SvB" secondAttribute="leading" constant="8" id="dvX-ka-iL7"/>
+                                                <constraint firstAttribute="trailing" secondItem="qSy-Tc-ULv" secondAttribute="trailing" constant="8" id="iKG-nA-IyI"/>
+                                                <constraint firstAttribute="trailing" secondItem="DNx-nU-cFi" secondAttribute="trailing" constant="8" id="wzq-er-IHz"/>
+                                                <constraint firstAttribute="bottom" secondItem="DNx-nU-cFi" secondAttribute="bottom" constant="8" id="ynH-Zq-Aal"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="qSy-Tc-ULv" id="46F-Hm-Zca"/>
+                                            <outlet property="titleLabel" destination="DNx-nU-cFi" id="2ah-rd-mQZ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsDetailContentCell" rowHeight="93" id="xp4-Bw-bM1" customClass="NewsDetailContentCell" customModule="TableViewSwiftSample" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="162" width="320" height="93"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xp4-Bw-bM1" id="kxh-jL-gaI">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="93"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ssf-CA-JeQ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="93"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ssf-CA-JeQ" firstAttribute="leading" secondItem="kxh-jL-gaI" secondAttribute="leading" id="GHt-TC-gcF"/>
+                                                <constraint firstAttribute="trailing" secondItem="ssf-CA-JeQ" secondAttribute="trailing" id="I7V-V4-Fcn"/>
+                                                <constraint firstAttribute="bottom" secondItem="ssf-CA-JeQ" secondAttribute="bottom" id="STH-bT-2Z9"/>
+                                                <constraint firstItem="ssf-CA-JeQ" firstAttribute="top" secondItem="kxh-jL-gaI" secondAttribute="top" id="njD-qv-Nrl"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentTextView" destination="ssf-CA-JeQ" id="iaq-ZX-1Mo"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="sP0-F7-TBS" secondAttribute="trailing" id="SDd-0i-jub"/>
+                            <constraint firstItem="sP0-F7-TBS" firstAttribute="top" secondItem="L4W-1r-xo1" secondAttribute="top" id="ndT-B8-Te3"/>
+                            <constraint firstItem="i1j-ab-0rg" firstAttribute="top" secondItem="sP0-F7-TBS" secondAttribute="bottom" id="pAd-mu-fNv"/>
+                            <constraint firstItem="sP0-F7-TBS" firstAttribute="leading" secondItem="L4W-1r-xo1" secondAttribute="leading" id="r0y-eP-Zhj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZrC-qO-McG"/>
+                    <connections>
+                        <outlet property="tableView" destination="sP0-F7-TBS" id="SOC-oQ-b2M"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A0O-m4-D1j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="732" y="362"/>
         </scene>
     </scenes>
 </document>

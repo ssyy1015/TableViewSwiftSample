@@ -16,11 +16,11 @@ class NewsCell: UITableViewCell {
 
 }
 
-class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class NewsListViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
 
     //tableView中身配列
-    var tableArray:NSArray!
+    var newsList:NSArray!
     
     // MARK: - ViewController
 
@@ -48,6 +48,18 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         super.didReceiveMemoryWarning()
     }
 
+    
+    // MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        //NewsDetailViewControllerにnewsの情報を設定して遷移する
+        let selectedIndexPath:NSIndexPath? = tableView.indexPathForSelectedRow
+        let newsDetail:NewsDetailViewController! = segue.destinationViewController as! NewsDetailViewController
+        let news = newsList[selectedIndexPath!.row];
+        newsDetail!.news = news as! NSDictionary
+        
+    }
+    
     // MARK: - Private
     
     /**
@@ -103,7 +115,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             let bearer = "Bearer "+udToken!
             manager.requestSerializer.setValue(bearer, forHTTPHeaderField:"Authorization")
             
-            let params:NSDictionary = ["limit":"20","start":"0"]
+            let params:NSDictionary = ["limit":"20","start":"0","with":"content"]
             
             manager.GET("https://ac-media-staging.api.everforth.com/2.1/LUCUAApp/news", parameters: params,
                 progress: { (progress) -> Void in
@@ -113,7 +125,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                     let data:NSArray?  = resDic["data"] as? NSArray
                     
                     if data != nil {
-                        self.tableArray = data!
+                        self.newsList = data!
                         self.tableView.reloadData()
                     }
                     
@@ -136,7 +148,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
      セクション毎のセル数を返却
      */
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableArray.count;
+        return newsList != nil ? newsList.count : 0;
     }
     
     /**
@@ -148,7 +160,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let cell:NewsCell! = tableView.dequeueReusableCellWithIdentifier("NewsCell", forIndexPath: indexPath) as? NewsCell
         
         //membersを取得
-        let news:NSDictionary! = tableArray[indexPath.row] as? NSDictionary
+        let news:NSDictionary! = newsList[indexPath.row] as? NSDictionary
         let image_url:String! = news["image_url"] as? String
         let title = news["title"]
         let public_at:String! = news["public_at"] as? String
@@ -177,10 +189,18 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             let url:NSURL = NSURL(string: image_url)!
             cell.thumbnailImageView.setImageWithURL(url)
         }
-        
         return cell
     }
     
+    //MARK: - UITableViewDelegate
+    
+    /**
+     Cell選択時
+     */
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //NewsDetailViewControllerにsegue遷移する
+        self.performSegueWithIdentifier("NewsDetailViewController", sender: nil)
+    }
     
 }
 
