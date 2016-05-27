@@ -1,6 +1,0 @@
-framework module Pods_TableViewSwiftSample {
-  umbrella header "Pods-TableViewSwiftSample-umbrella.h"
-
-  export *
-  module * { export * }
-}

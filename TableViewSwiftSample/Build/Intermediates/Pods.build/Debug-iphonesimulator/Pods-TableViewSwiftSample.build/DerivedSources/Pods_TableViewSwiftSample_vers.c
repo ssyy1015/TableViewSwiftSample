@@ -1,1 +1,0 @@
- const unsigned char Pods_TableViewSwiftSampleVersionString[] __attribute__ ((used)) = "@(#)PROGRAM:Pods_TableViewSwiftSample  PROJECT:Pods-1" "\n"; const double Pods_TableViewSwiftSampleVersionNumber __attribute__ ((used)) = (double)1.;
