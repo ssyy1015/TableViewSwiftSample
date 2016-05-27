@@ -64,7 +64,7 @@
 			children = (
 				9BFA70A31C96FFF300C04210 /* AppDelegate.swift */,
 			);
-			name = AppDelegate;
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 		9B9F03681CF7D2590099AF99 /* News */ = {
@@ -73,7 +73,7 @@
 				9BFA70A51C96FFF300C04210 /* NewsListViewController.swift */,
 				9B9F03651CF7D24B0099AF99 /* NewsDetailViewController.swift */,
 			);
-			name = News;
+			path = News;
 			sourceTree = "<group>";
 		};
 		9B9F03691CF7D2650099AF99 /* Controller */ = {
@@ -81,7 +81,7 @@
 			children = (
 				9B9F03681CF7D2590099AF99 /* News */,
 			);
-			name = Controller;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		9B9F036A1CF7D26D0099AF99 /* View */ = {
@@ -90,7 +90,7 @@
 				9BFA70A71C96FFF300C04210 /* Main.storyboard */,
 				9BFA70AC1C96FFF300C04210 /* LaunchScreen.storyboard */,
 			);
-			name = View;
+			path = View;
 			sourceTree = "<group>";
 		};
 		9B9F036B1CF7D27B0099AF99 /* Assets */ = {
@@ -98,21 +98,21 @@
 			children = (
 				9BFA70AA1C96FFF300C04210 /* Assets.xcassets */,
 			);
-			name = Assets;
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		9B9F036C1CF7E1220099AF99 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		9B9F036D1CF7E12B0099AF99 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = Common;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		9BFA70971C96FFF300C04210 = {
