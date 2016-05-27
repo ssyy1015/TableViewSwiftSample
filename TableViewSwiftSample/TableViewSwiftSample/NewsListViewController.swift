@@ -58,6 +58,8 @@ class NewsListViewController: UIViewController,UITableViewDelegate,UITableViewDa
         let news = newsList[selectedIndexPath!.row];
         newsDetail!.news = news as! NSDictionary
         
+        tableView.deselectRowAtIndexPath(selectedIndexPath!, animated: true)
+        
     }
     
     // MARK: - Private

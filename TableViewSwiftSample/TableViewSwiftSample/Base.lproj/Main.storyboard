@@ -172,23 +172,21 @@ title</string>
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="93"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ssf-CA-JeQ">
+                                                <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w9m-O1-Hwy">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="93"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                                                     <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
-                                                </textView>
+                                                </webView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ssf-CA-JeQ" firstAttribute="leading" secondItem="kxh-jL-gaI" secondAttribute="leading" id="GHt-TC-gcF"/>
-                                                <constraint firstAttribute="trailing" secondItem="ssf-CA-JeQ" secondAttribute="trailing" id="I7V-V4-Fcn"/>
-                                                <constraint firstAttribute="bottom" secondItem="ssf-CA-JeQ" secondAttribute="bottom" id="STH-bT-2Z9"/>
-                                                <constraint firstItem="ssf-CA-JeQ" firstAttribute="top" secondItem="kxh-jL-gaI" secondAttribute="top" id="njD-qv-Nrl"/>
+                                                <constraint firstItem="w9m-O1-Hwy" firstAttribute="leading" secondItem="kxh-jL-gaI" secondAttribute="leading" id="J7h-eo-fkw"/>
+                                                <constraint firstItem="w9m-O1-Hwy" firstAttribute="top" secondItem="kxh-jL-gaI" secondAttribute="top" id="VmO-Mc-Lk8"/>
+                                                <constraint firstAttribute="bottom" secondItem="w9m-O1-Hwy" secondAttribute="bottom" id="m0X-R2-V5W"/>
+                                                <constraint firstAttribute="trailing" secondItem="w9m-O1-Hwy" secondAttribute="trailing" id="tny-C5-wHI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="contentTextView" destination="ssf-CA-JeQ" id="iaq-ZX-1Mo"/>
+                                            <outlet property="webView" destination="w9m-O1-Hwy" id="yLR-G1-kgJ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

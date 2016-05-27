@@ -21,22 +21,28 @@ class NewsDetailHeaderCell: UITableViewCell {
 }
 
 class NewsDetailContentCell: UITableViewCell {
-    @IBOutlet weak var contentTextView: UITextView!
+
+    @IBOutlet weak var webView: UIWebView!
+    //    @IBOutlet weak var contentTextView: UITextView!
 }
 
-class NewsDetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class NewsDetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIWebViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
     var news:NSDictionary!
     var headerHTML:String!
     var footerHTML:String!
+    var contentCellHeight:CGFloat!
+    var isLoadFinish:Bool!
 
     // MARK: - ViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.isLoadFinish = false
+        
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
         
@@ -44,6 +50,8 @@ class NewsDetailViewController: UIViewController,UITableViewDelegate,UITableView
         self.tableView.rowHeight = UITableViewAutomaticDimension
      
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+
+        self.contentCellHeight = 0
         
         self.newsCSS()
     }
@@ -55,13 +63,25 @@ class NewsDetailViewController: UIViewController,UITableViewDelegate,UITableView
     
     // MARK: - Private
     
+    /**
+    セルの高さ計算
+    */
+    func cellHeightForWebView(webView:UIWebView!) ->CGFloat
+    {
+        let javascript:String = "document.documentElement.scrollHeight;";
+        var height:CGFloat = 0.0
+        if let n = NSNumberFormatter().numberFromString(webView.stringByEvaluatingJavaScriptFromString(javascript)!) {
+            height = CGFloat(n)
+        }
+        return height;
+    }
+    
     func newsCSS() {
         //"http://media-ref.everforth.com/ac/sp-template/html.json?"
         //リクエスト
         let manager:AFHTTPSessionManager = AFHTTPSessionManager()
         let serializer:AFJSONResponseSerializer = AFJSONResponseSerializer()
         manager.responseSerializer = serializer
-        
         
         manager.GET("http://media-ref.everforth.com/ac/sp-template/html.json?", parameters: nil,
             progress: { (progress) -> Void in
@@ -102,6 +122,25 @@ class NewsDetailViewController: UIViewController,UITableViewDelegate,UITableView
         }
         
         return NewsDetailCellRows.Count.rawValue;
+        
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        var ret:CGFloat! = 0.0
+        
+        switch indexPath.row {
+        case NewsDetailCellRows.Header.rawValue:
+            ret = 70
+        case NewsDetailCellRows.Content.rawValue:
+            ret = self.contentCellHeight
+        case NewsDetailCellRows.Count.rawValue:
+            break
+        default:
+            break
+        }
+        
+        return ret
     }
     
     /**
@@ -110,7 +149,6 @@ class NewsDetailViewController: UIViewController,UITableViewDelegate,UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var retCell = UITableViewCell()
-        
         
         switch indexPath.row {
             
@@ -145,31 +183,38 @@ class NewsDetailViewController: UIViewController,UITableViewDelegate,UITableView
             let cell:NewsDetailContentCell! = tableView.dequeueReusableCellWithIdentifier("NewsDetailContentCell", forIndexPath: indexPath) as? NewsDetailContentCell
             
             let title:String? = news["content"] as? String
-            cell.contentTextView.text = title!
-
-            do {
-                
-                let html:String = self.headerHTML + title! + self.footerHTML
-                
-                //テキストをUTF-8エンコード
-                let encodedData = html.dataUsingEncoding(NSUTF8StringEncoding)!
-                
-                //表示データのオプションの設定
-                let attributedOptions : [String : AnyObject] = [
-                    NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType, //表示データのドキュメントタイプ
-                    NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding, //表示データの文字エンコード
-                ]
-                
-                //文字列の変換処理の実装（try 〜 catch構文を使っています。）
-                let attributedString = try NSAttributedString(data: encodedData, options: attributedOptions, documentAttributes: nil)
-                
-                //HTMLとしてUITextViewに表示する
-                cell.contentTextView.attributedText = attributedString
-                //ここは例外処理
-            } catch {
-                fatalError("Unhandled error: \(error)")
+//            cell.contentTextView.text = title!
+//
+//            do {
+//                
+//                //APIで取得したHTMLをcontent部分と結合
+//                let html:String = self.headerHTML + title! + self.footerHTML
+//                
+//                //テキストをUTF-8エンコード
+//                let encodedData = html.dataUsingEncoding(NSUTF8StringEncoding)!
+//                
+//                //表示データのオプションの設定
+//                let attributedOptions : [String : AnyObject] = [
+//                    NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType, //表示データのドキュメントタイプ
+//                    NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding, //表示データの文字エンコード
+//                ]
+//                
+//                //文字列の変換処理の実装（try 〜 catch構文を使っています。）
+//                let attributedString = try NSAttributedString(data: encodedData, options: attributedOptions, documentAttributes: nil)
+//                
+//                //HTMLとしてUITextViewに表示する
+//                cell.contentTextView.attributedText = attributedString
+//                //ここは例外処理
+//            } catch {
+//                fatalError("Unhandled error: \(error)")
+//            }
+            
+            let html:String = self.headerHTML + title! + self.footerHTML
+            cell.webView.delegate = self;
+            cell.webView.scrollView.scrollEnabled = false
+            if(!isLoadFinish) {
+                cell.webView.loadHTMLString(html, baseURL: nil)
             }
-                
             retCell = cell
             
         case NewsDetailCellRows.Count.rawValue:
@@ -181,5 +226,18 @@ class NewsDetailViewController: UIViewController,UITableViewDelegate,UITableView
         
         return retCell
     }
+    
+    
 
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        
+        self.contentCellHeight = self.cellHeightForWebView(webView)
+        self.isLoadFinish = true
+        self.tableView.reloadData()
+    
+    }
+    
 }
+
+

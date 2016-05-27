@@ -87,6 +87,7 @@ typedef int swift_int3  __attribute__((__ext_vector_type__(3)));
 typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 #if defined(__has_feature) && __has_feature(modules)
 @import UIKit;
+@import CoreGraphics;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -120,11 +121,11 @@ SWIFT_CLASS("_TtC20TableViewSwiftSample8NewsCell")
 - (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UITextView;
+@class UIWebView;
 
 SWIFT_CLASS("_TtC20TableViewSwiftSample21NewsDetailContentCell")
 @interface NewsDetailContentCell : UITableViewCell
-@property (nonatomic, weak) IBOutlet UITextView * __null_unspecified contentTextView;
+@property (nonatomic, weak) IBOutlet UIWebView * __null_unspecified webView;
 - (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * __nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -144,13 +145,16 @@ SWIFT_CLASS("_TtC20TableViewSwiftSample20NewsDetailHeaderCell")
 @class NSBundle;
 
 SWIFT_CLASS("_TtC20TableViewSwiftSample24NewsDetailViewController")
-@interface NewsDetailViewController : UIViewController <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface NewsDetailViewController : UIViewController <UIScrollViewDelegate, UITableViewDataSource, UIWebViewDelegate, UITableViewDelegate>
 @property (nonatomic, weak) IBOutlet UITableView * __null_unspecified tableView;
 @property (nonatomic, strong) NSDictionary * __null_unspecified news;
 @property (nonatomic, copy) NSString * __null_unspecified headerHTML;
 @property (nonatomic, copy) NSString * __null_unspecified footerHTML;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
+
+/// セルの高さ計算
+- (CGFloat)cellHeightForWebView:(UIWebView * __null_unspecified)webView;
 - (void)newsCSS;
 
 /// セクション数返却
@@ -158,9 +162,11 @@ SWIFT_CLASS("_TtC20TableViewSwiftSample24NewsDetailViewController")
 
 /// セクション毎のセル数を返却
 - (NSInteger)tableView:(UITableView * __nonnull)tableView numberOfRowsInSection:(NSInteger)section;
+- (CGFloat)tableView:(UITableView * __nonnull)tableView heightForRowAtIndexPath:(NSIndexPath * __nonnull)indexPath;
 
 /// indexPathに応じたセルを返却
 - (UITableViewCell * __nonnull)tableView:(UITableView * __nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * __nonnull)indexPath;
+- (void)webViewDidFinishLoad:(UIWebView * __nonnull)webView;
 - (nonnull instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
