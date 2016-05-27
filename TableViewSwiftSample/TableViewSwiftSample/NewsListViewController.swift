@@ -26,20 +26,23 @@ class NewsListViewController: UIViewController,UITableViewDelegate,UITableViewDa
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
+        //プロトコルの設定
         tableView.delegate = self;
         tableView.dataSource = self;
         
+        //UserDefaultsからtoken持って来る
         let ud = NSUserDefaults.standardUserDefaults()
         let udToken:String? = ud.stringForKey("token")
         
         if udToken == nil {
-            //registerProfileをコール
+            //tokenがなければregisterProfileをコール
             self.registerProfile({ () -> Void in
                 self.news()
             })
         }
         else {
+            //tokenがあればそのままNewsを取得
             self.news()
         }
     }
@@ -50,6 +53,7 @@ class NewsListViewController: UIViewController,UITableViewDelegate,UITableViewDa
 
     
     // MARK: - Navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         //NewsDetailViewControllerにnewsの情報を設定して遷移する
@@ -58,6 +62,7 @@ class NewsListViewController: UIViewController,UITableViewDelegate,UITableViewDa
         let news = newsList[selectedIndexPath!.row];
         newsDetail!.news = news as! NSDictionary
         
+        //選択状態を解除
         tableView.deselectRowAtIndexPath(selectedIndexPath!, animated: true)
         
     }
@@ -73,13 +78,16 @@ class NewsListViewController: UIViewController,UITableViewDelegate,UITableViewDa
         let serializer:AFJSONResponseSerializer = AFJSONResponseSerializer()
         manager.responseSerializer = serializer
         
+        //パラメータ生成
         let uuid = NSUUID().UUIDString
         let params:NSDictionary = ["uuid":uuid,"ostype":"ios","_execution_mode":"dev"]
         
+        //POSTリクエスト
         manager.POST("https://ac-media-staging.api.everforth.com/2.0/LUCUAApp/register_provisional", parameters: params,
             progress: { (progress) -> Void in
-                
+                //do nothing
             }, success: { (dataTask, response) -> Void in
+                //レスポンスをパースしてコールバック
                 let resDic:NSDictionary! = response as! NSDictionary
                 let token:String = resDic["data"]!["access_token"] as! String
 
@@ -117,16 +125,20 @@ class NewsListViewController: UIViewController,UITableViewDelegate,UITableViewDa
             let bearer = "Bearer "+udToken!
             manager.requestSerializer.setValue(bearer, forHTTPHeaderField:"Authorization")
             
+            //パラメータ生成
             let params:NSDictionary = ["limit":"20","start":"0","with":"content"]
             
+            //GETリクエスト
             manager.GET("https://ac-media-staging.api.everforth.com/2.1/LUCUAApp/news", parameters: params,
                 progress: { (progress) -> Void in
-                    
+                    //do nothing
                 }, success: { (dataTask, response) -> Void in
+                    //レスポンスをパース
                     let resDic:NSDictionary! = response as! NSDictionary
                     let data:NSArray?  = resDic["data"] as? NSArray
                     
                     if data != nil {
+                        //dataがとれればデータを更新して画面描画
                         self.newsList = data!
                         self.tableView.reloadData()
                     }
